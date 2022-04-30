@@ -3,12 +3,9 @@ Add current "timestamp" as an attribute, add type attribute, change "payee" to "
 Keeping track of which player owns which item
 
 Triggers
-1. set default value for points and acount balance when a new user is created
-2. current timestamp for a review
-3. "account level" in PLAYER gets updated based on the score in PLAYS table
-4. when "stars" attribute in REVIEW table is updated, automatically 
-5. whenever a tx is added, create a trigger to credit the appropriate entity (this could be split into multiple procedures)
-6. MemberOf table shud not be created explicitly, it should be created automatically after Developer table and Dev Team table are created.
+1. "account level" in PLAYER gets updated based on the score in PLAYS table
+2. when "stars" attribute in REVIEW table is updated, manipulate cash_earned and skill_rating in developer table
+3. whenever a tx is added, create a trigger to credit the appropriate entity (this could be split into multiple procedures)
 
 Procedures
 1. start_playing_game() -> start the game

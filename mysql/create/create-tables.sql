@@ -10,8 +10,7 @@ create table Player (
 	player_id int,
     coins int default 0,
     
-    -- not sure if account level should be int or string or like BASIC, SILVER, GOLD or float.
-    account_level int default 0,
+    account_level varchar(50) default 'noob',
     
     primary key (player_id),
     foreign key (player_id) references User(user_id)
