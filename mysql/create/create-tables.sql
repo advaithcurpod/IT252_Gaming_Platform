@@ -50,7 +50,9 @@ create table Game (
     game_price float not null,
     description varchar(200) not null,
     tags varchar(50) not null,
+    team_id int,
     primary key (game_id),
+    foreign key (team_id) references DevTeam(team_id),
     constraint valid_price check(game_price>=0)
 );
 
