@@ -24,7 +24,13 @@ select * from Review
 -- Query 4 - nested
 
 -- Query 5 - correlated
-
+-- Find the reviews of all players which have more stars than the
+-- average of stars in all of thier reviews
+select * from Review R
+    where stars >= (
+        select avg(stars) from Review S
+            where R.user_id = S.user_id
+    );
 
 -- Query 6 - correlated
 
