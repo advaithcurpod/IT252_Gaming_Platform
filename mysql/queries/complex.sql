@@ -1,10 +1,10 @@
 -- Query 1 - nested
--- Find all the games made by developer 3
+-- Find all the games made by developer 23424
 
 select game_name from Game
-    where game_in in (
+    where team_id in (
         select team_id from Member_of
-            where dev_id = 3;
+            where dev_id = 23424
     );
 
 -- Query 2 - nested
@@ -12,7 +12,7 @@ select game_name from Game
 -- and with stars less than or equal to 3
 
 select * from Review
-    where user_id, game_id in (
+    where (user_id, game_id) in (
         select user_id, game_id from Plays
             where play_time >= cast("03:00:00" as time)
     ) 
