@@ -20,6 +20,13 @@ select * from Review
     stars <= 3;
 
 -- Query 3 - nested
+-- Find all players whose account level is greater than the average
+-- account level of all players
+
+select player_id from Player
+    where account_level > (
+        select avg(account_level) from Player
+    );
 
 -- Query 4 - nested
 
