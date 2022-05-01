@@ -62,7 +62,7 @@ INSERT INTO Member_of VALUES(2, 93451);
 INSERT INTO Review(user_id, game_id, stars, review_text) VALUES (79456, 2, 4, "Awesome game!" );
 INSERT INTO Review(user_id, game_id, stars, review_text) VALUES (23486, 1, 1, "Game takes ages to load :(" );
 INSERT INTO Review(user_id, game_id, stars, review_text) VALUES (12412, 2, 5, "Love the game! The graphics of this game are excellent" );
-INSERT INTO Review(user_id, game_id, stars, review_text) VALUES (79456, 3, 4, "I play this game daily...so much fun" );
+INSERT INTO Review(user_id, game_id, stars, review_text) VALUES (79456, 3, 5, "I play this game daily...so much fun" );
 INSERT INTO Review(user_id, game_id, stars, review_text) VALUES (86543, 4, 2, "Visuls could be better" );
 
 INSERT INTO Item VALUES(1, 'Gems', 'PLATFORM');
