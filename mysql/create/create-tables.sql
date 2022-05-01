@@ -25,7 +25,6 @@ create table Chats (
     player1_id int not null,
     player2_id int not null,
     message varchar(10000),
-    primary key (player1_id, player2_id),
     
     foreign key (player1_id) references Player (player_id),
     foreign key (player2_id) references Player (player_id),
