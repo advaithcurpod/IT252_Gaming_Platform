@@ -39,7 +39,7 @@ create table Game (
     game_id int primary key,
     game_name varchar(50) not null unique,
     game_price float not null,
-    description varchar(200) not null,
+    description text not null,
     tags varchar(50) not null,
     team_id int,
     
