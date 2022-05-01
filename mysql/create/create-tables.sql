@@ -61,6 +61,8 @@ create table Review (
     review_text text,
     date_time datetime default CURRENT_TIMESTAMP,
     
+    primary key (user_id, game_id),
+
     foreign key (user_id) references User (user_id),
     foreign key (game_id) references Game (game_id)
 );
