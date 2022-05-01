@@ -70,30 +70,33 @@ create table Plays (
     game_id int,
     score int,
     play_time time,
-    
+
     foreign key (user_id) references User (user_id),
     foreign key (game_id) references Game (game_id)
 );
 create table Transactions (
-    tx_id int primary key,
+    tx_id int,
     payer int,
     id int,
     id_type ENUM('USER', 'GAME', 'ITEM'),
     tx_amt float,
     tx_time datetime default CURRENT_TIMESTAMP,
-    
+
+    primary key (tx_id),
     check (tx_amt > 0)
 );
 create table Item (
-    item_id int primary key,
+    item_id int,
     item_name varchar(50),
-    item_type ENUM('PLATFORM', 'GAME')
+    item_type ENUM('PLATFORM', 'GAME'),
+
+    primary key (item_id)
 );
 create table PlatformItem (
     item_id int,
     item_cost float,
-    item_creator int not null,
-    
+    item_creator int,
+
     foreign key (item_id) references Item (item_id),
     foreign key (item_creator) references User (user_id),
     check (item_cost >= 0)
@@ -103,7 +106,7 @@ create table GameItem (
     quantity int,
     item_worth float,
     game_id int,
-    
+
     foreign key (item_id) references Item (item_id),
     foreign key (game_id) references Game (game_id),
     check (quantity >= 0),
