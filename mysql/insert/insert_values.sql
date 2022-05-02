@@ -36,6 +36,7 @@ INSERT INTO Developer(dev_id, dev_role, cash_earned) VALUES (38912, 'Lead Artist
 INSERT INTO Developer(dev_id, dev_role, cash_earned) VALUES (93451, 'Game Tester', 9020);
 
 INSERT INTO Chats VALUES(23424, 79456, 'Hello Tina, I am Swetha!');
+INSERT INTO Chats VALUES(79456, 23424, 'Hello Swetha. Nice to meet you :)');
 INSERT INTO Chats VALUES(12412, 43943, 'Yo Prasad, what is your best score today in PUBG?');
 INSERT INTO Chats VALUES(86543, 79456, 'Have you started playing League of Legends?');
 INSERT INTO Chats VALUES(93451, 23486, 'Mary, wanna play Minecraft now?');
