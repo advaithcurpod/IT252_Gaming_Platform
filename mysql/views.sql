@@ -33,3 +33,10 @@ CREATE VIEW game_creators AS
     
 SELECT * FROM game_creators;
 
+
+CREATE VIEW game_reviews AS
+SELECT game_id, review_text 
+FROM Review
+ORDER BY game_id;
+
+SELECT * FROM game_reviews
