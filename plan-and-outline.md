@@ -1,4 +1,4 @@
-# Transations Table
+# Transactions Table
 Add current "timestamp" as an attribute, add type attribute, change "payee" to "id" (could be the game id or the item id)
 Keeping track of which player owns which item
 
