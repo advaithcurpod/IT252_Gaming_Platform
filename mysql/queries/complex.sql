@@ -40,5 +40,14 @@ select * from Review R
     );
 
 -- Query 6 - correlated
+-- Find all pairs of users who have communicated with more than 2 messages
+
+select distinct least(C.player1_id, C.player2_id) player1, greatest(C.player1_id, C.player2_id) player2 from Chats C
+    where (select count(*) from Chats D
+        where
+        (D.player1_id = C.player1_id and D.player2_id = C.player2_id)
+        or
+        (D.player2_id = C.player1_id and D.player1_id = C.player2_id)
+    ) >= 2;
 
 -- Query 7 - correlated
