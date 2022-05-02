@@ -87,7 +87,7 @@ INSERT INTO Plays(user_id, game_id, score) VALUES(23435, 2, 1500);
 INSERT INTO Plays(user_id, game_id, score) VALUES(38912, 3, 2200);
 
 INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(101, 43943, 1, 'GAME', 10);
-INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(102, 479456, 23435, 'USER', 10000);
+INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(102, 79456, 23435, 'USER', 10000);
 INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(103, 93451, 6, 'ITEM', 0.2);
 
 
