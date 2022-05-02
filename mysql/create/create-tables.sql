@@ -40,7 +40,7 @@ create table Game (
     game_name varchar(50) not null unique,
     game_price float not null,
     description text not null,
-    tags varchar(50) not null,
+    tags varchar(100) not null,
     team_id int,
     
     foreign key (team_id) references DevTeam(team_id),
