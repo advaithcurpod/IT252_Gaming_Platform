@@ -9,10 +9,7 @@ Keeping track of which player owns which item
 
 # Procedures
 1. start_playing_game() -> start the game
-2. stop_playing_game() -> stop playing game
-play time could determine the coins earned by the player
-
-create a temp table to store the same
+2. stop_playing_game() -> stop playing game play time could determine the coins earned by the player create a temp table to store the same
 3. view all the Tx made by the user, on a particular day, to a game and stuff like that..
 4. order the games by "stars" and that will be storred in a view
 5. create a function to compute the average rating of each game (each rating is taken from the review)
@@ -26,3 +23,4 @@ create a temp table to store the same
 2. ordering the top games
 3. ordering the top developers
 4. a view which shows which teams made which games
+
