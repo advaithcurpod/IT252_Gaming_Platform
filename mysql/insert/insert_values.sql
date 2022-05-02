@@ -66,9 +66,9 @@ INSERT INTO Review(user_id, game_id, stars, review_text) VALUES (79456, 3, 5, "I
 INSERT INTO Review(user_id, game_id, stars, review_text) VALUES (86543, 4, 2, "Visuals could be better" );
 
 INSERT INTO Item VALUES(1, 'Gems', 'PLATFORM');
-INSERT INTO Item VALUES(2, 'Avatar1', 'PLATFORM');
-INSERT INTO Item VALUES(3, 'Avatar2', 'PLATFORM');
-INSERT INTO Item VALUES(4, 'Avatar3', 'PLATFORM');
+INSERT INTO Item VALUES(2, 'BlitzCrown', 'PLATFORM');
+INSERT INTO Item VALUES(3, 'CrystalFruits', 'PLATFORM');
+INSERT INTO Item VALUES(4, 'TreasureChests', 'PLATFORM');
 INSERT INTO Item VALUES(5, 'Golden Pants', 'GAME');
 INSERT INTO Item VALUES(6, 'Coloured Water', 'GAME');
 
