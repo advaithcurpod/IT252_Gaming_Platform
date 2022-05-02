@@ -10,7 +10,7 @@ SELECT * FROM top_players;
 
 CREATE VIEW top_games AS
     SELECT g.game_name as 'Game', avg(r.stars) AS 'Stars'
-    FROM Game g, Reviews r
+    FROM Game g, Review r
     WHERE g.game_id=r.game_id
     GROUP BY g.game_name
     ORDER BY avg(r.stars) DESC;

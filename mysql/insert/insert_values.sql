@@ -81,9 +81,9 @@ INSERT INTO PlatformItem VALUES(3, 15, 12412);
 INSERT INTO PlatformItem VALUES(4, 5, 12412);
 
 
-INSERT INTO Plays VALUES(23424, 1, 1000, 180);
-INSERT INTO Plays VALUES(23435, 2, 1500, 200);
-INSERT INTO Plays VALUES(38912, 3, 2200, 390);
+INSERT INTO Plays(user_id, game_id, score) VALUES(23424, 1, 1000);
+INSERT INTO Plays(user_id, game_id, score) VALUES(23435, 2, 1500);
+INSERT INTO Plays(user_id, game_id, score) VALUES(38912, 3, 2200);
 
 INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(101, 43943, 1, 'GAME', 10);
 INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(102, 479456, 23435, 'USER', 10000);
