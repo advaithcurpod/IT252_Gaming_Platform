@@ -104,7 +104,7 @@ INSERT INTO PlatformItem VALUES(4, 5, 12412);
 SELECT * FROM PlatformItem;
 
 INSERT INTO Plays(user_id, game_id, score) VALUES(23424, 1, 1000);
-INSERT INTO Plays(user_id, game_id, score) VALUES(23435, 2, 1500);
+-- INSERT INTO Plays(user_id, game_id, score) VALUES(23435, 2, 1500); 
 INSERT INTO Plays(user_id, game_id, score) VALUES(38912, 3, 2200);
 
 SELECT * FROM Plays;
@@ -114,5 +114,6 @@ INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(102, 79456, 2
 INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(103, 93451, 6, 'ITEM', 4);
 INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(104, 79456, 38912, 'USER', 5000);
 
+select * from Developer;
 select * from Player;
 select * from Plays;

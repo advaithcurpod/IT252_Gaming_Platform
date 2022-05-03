@@ -17,8 +17,6 @@ create table Developer (
     dev_role varchar(50) not null,
     cash_earned int default 0,
     skill_rating float default 0.0,
-    -- out of 5
-    skill_rating float default 0.0,
     foreign key (dev_id) references Player(player_id),
     check(cash_earned >= 0)
 );
@@ -64,7 +62,7 @@ create table Review (
     foreign key (game_id) references Game (game_id)
 );
 create table Plays (
-    user_id int not null,
+	user_id int not null,
     game_id int not null,
     score int default 0,
     play_time time,
@@ -80,7 +78,6 @@ create table Transactions (
     id_type ENUM('USER', 'GAME', 'ITEM') not null,
     tx_amt float not null,
     tx_time datetime default CURRENT_TIMESTAMP,
-    primary key(payer, id_type, id, tx_time),
     check (tx_amt > 0)
 );
 create table Item (
