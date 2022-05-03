@@ -1,34 +1,37 @@
 -- update the account level when user score in games increases
-drop trigger if exists update_account_level;
+drop trigger if exists insert_account_level;
 delimiter $$
-create trigger update_account_level
-after update on Plays
+create trigger insert_account_level
+after insert on Plays
 for each row
 begin
-	select avg(score) into @avg_score from Plays;
-	if(avg_score between 0 and 100) then
+	-- select avg(score) into @avg_score from Plays;
+	if(score between 0 and 100) then
     update Player set account_level = 'noob';
-	elseif(avg_score between 100 and 1000) then
+	elseif(score between 100 and 1000) then
 	update Player set account_level = 'beginner';
-	elseif(avg_score between 1000 and 2000) then
+	elseif(score between 1000 and 2000) then
 	update Player set account_level = 'average';
-	elseif(avg_score between 2000 and 5000) then
+	elseif(score between 2000 and 5000) then
 	update Player set account_level = 'pro';
-	elseif(avg_score > 5000) then
+	elseif(score > 5000) then
 	update Player set account_level = 'legend';
 	end if;
 end $$
 delimiter ;
 
+
+
 -- update the skill_rating of all developers when review is posted
+-- gives an error "result consisted of more than 1 row"
 drop trigger if exists update_developer_skill_on_insert;
 delimiter $$
 create trigger update_developer_skill_on_insert
 after insert on Review
 for each row
 begin
-select avg(stars) into @avg_stars from Review having game_id = new.game_id;
-update Developer set skill_rating = avg_stars where dev_id in (select dev_id from Member_of where team_id in (select team_id from Game where game_id = new.game_id));
+select avg(stars) into @avg_stars from Review group by game_id;
+update Developer set skill_rating = (select avg(stars) from Review where new.game_id = (select game_id from Review)) where dev_id in (select dev_id from Member_of where team_id in (select team_id from Game where game_id = new.game_id));
 end $$
 delimiter ;
 
@@ -60,3 +63,10 @@ end if;
 update Player set coins = coins - new.tx_amt where player_id = payer;
 end $$
 delimiter ;
+
+
+
+
+
+-- trigger testing
+select * from Developer;

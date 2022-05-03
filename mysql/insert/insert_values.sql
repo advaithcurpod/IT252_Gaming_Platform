@@ -53,6 +53,7 @@ INSERT INTO Game VALUES(4, 'Minecraft', 50, 'Explore infinite worlds and build e
 
 INSERT INTO Member_of VALUES(1, 32432);
 INSERT INTO Member_of VALUES(1, 23424);
+-- INSERT INTO Member_of VALUES(1, 23424);
 INSERT INTO Member_of VALUES(1, 65423);
 INSERT INTO Member_of VALUES(1, 82423);
 INSERT INTO Member_of VALUES(2, 43943);
@@ -60,6 +61,7 @@ INSERT INTO Member_of VALUES(2, 23435);
 INSERT INTO Member_of VALUES(2, 38912);
 INSERT INTO Member_of VALUES(2, 93451);
 
+delete from Review;
 INSERT INTO Review(user_id, game_id, stars, review_text) VALUES (79456, 2, 4, "Awesome game!" );
 INSERT INTO Review(user_id, game_id, stars, review_text) VALUES (23486, 1, 1, "Game takes ages to load :(" );
 INSERT INTO Review(user_id, game_id, stars, review_text) VALUES (12412, 2, 5, "Love the game! The graphics of this game are excellent" );
@@ -81,7 +83,6 @@ INSERT INTO PlatformItem VALUES(2, 20, 12412);
 INSERT INTO PlatformItem VALUES(3, 15, 12412);
 INSERT INTO PlatformItem VALUES(4, 5, 12412);
 
-
 INSERT INTO Plays(user_id, game_id, score) VALUES(23424, 1, 1000);
 INSERT INTO Plays(user_id, game_id, score) VALUES(23435, 2, 1500);
 INSERT INTO Plays(user_id, game_id, score) VALUES(38912, 3, 2200);
@@ -90,4 +91,5 @@ INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(101, 43943, 1
 INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(102, 79456, 23435, 'USER', 10000);
 INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(103, 93451, 6, 'ITEM', 0.2);
 
-
+select * from Player;
+select * from Plays;
