@@ -42,3 +42,38 @@ CALL start_time(23424,1);
 CALL end_time(23424,1);
 
 SELECT * FROM Plays;
+
+
+DROP PROCEDURE if exists user_chats ; 
+DELIMITER $$
+CREATE PROCEDURE user_chats(IN uid INT)
+BEGIN
+	SELECT player2_id FROM Chats WHERE player1_id=uid;
+END $$ 
+DELIMITER ;
+
+CALL user_chats(12412);
+
+
+DROP PROCEDURE if exists user_chats; 
+DELIMITER $$
+CREATE PROCEDURE user_chats(IN uid INT)
+BEGIN
+	SELECT player2_id FROM Chats WHERE player1_id=uid;
+END $$ 
+DELIMITER ;
+
+CALL user_chats(12412);
+
+
+DROP PROCEDURE if exists items_in_game; 
+DELIMITER $$
+CREATE PROCEDURE items_in_game(IN gid INT)
+BEGIN
+	SELECT item_name FROM Item i, GameItem g WHERE i.item_id=g.item_id AND game_id=gid;
+END $$ 
+DELIMITER ;
+
+CALL items_in_game(1);
+
+

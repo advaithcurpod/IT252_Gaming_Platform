@@ -1,4 +1,4 @@
-CREATE VIEW top_players AS
+CREATE OR REPLACE VIEW top_players AS
     SELECT u.user_name as 'Name', avg(p.score) AS 'Score'
     FROM User u, Plays p
     WHERE u.user_id=p.user_id
@@ -8,7 +8,7 @@ CREATE VIEW top_players AS
 SELECT * FROM top_players;
 
 
-CREATE VIEW top_games AS
+CREATE OR REPLACE VIEW top_games AS
     SELECT g.game_name as 'Game', avg(r.stars) AS 'Stars'
     FROM Game g, Review r
     WHERE g.game_id=r.game_id
@@ -18,8 +18,8 @@ CREATE VIEW top_games AS
 SELECT * FROM top_games;
 
 
-CREATE VIEW top_developers AS
-    SELECT u.user_name as 'Develiper', d.skill_rating as 'Rating'
+CREATE OR REPLACE VIEW top_developers AS
+    SELECT u.user_name as 'Developer', d.skill_rating as 'Rating'
     FROM User u, Developer d
     WHERE d.dev_id=u.user_id
     ORDER BY d.skill_rating DESC;
@@ -27,14 +27,14 @@ CREATE VIEW top_developers AS
 SELECT * FROM top_developers;
 
 
-CREATE VIEW game_creators AS
+CREATE OR REPLACE VIEW game_creators AS
     SELECT game_name, team_id AS 'Dev Team'
     FROM Game;
     
 SELECT * FROM game_creators;
 
 
-CREATE VIEW game_reviews AS
+CREATE OR REPLACE VIEW game_reviews AS
 SELECT game_id, review_text 
 FROM Review
 ORDER BY game_id;
