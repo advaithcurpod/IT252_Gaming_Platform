@@ -64,6 +64,7 @@ SELECT * FROM Game;
 
 INSERT INTO Member_of VALUES(1, 32432);
 INSERT INTO Member_of VALUES(1, 23424);
+-- INSERT INTO Member_of VALUES(1, 23424);
 INSERT INTO Member_of VALUES(1, 65423);
 INSERT INTO Member_of VALUES(1, 82423);
 INSERT INTO Member_of VALUES(2, 43943);
@@ -110,7 +111,8 @@ SELECT * FROM Plays;
 
 INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(101, 43943, 1, 'GAME', 10);
 INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(102, 79456, 23435, 'USER', 10000);
-INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(103, 93451, 6, 'ITEM', 0.2);
-INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(104, 479456, 38912, 'USER', 5000);
+INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(103, 93451, 6, 'ITEM', 4);
+INSERT INTO Transactions(tx_id, payer, id, id_type, tx_amt) VALUES(104, 79456, 38912, 'USER', 5000);
 
-SELECT * FROM Transactions;
+select * from Player;
+select * from Plays;
