@@ -65,7 +65,7 @@ create table Plays (
 	user_id int not null,
     game_id int not null,
     score int default 0,
-    play_time time,
+    play_time time default (cast("00:00:00" as time)),
     primary key (user_id, game_id),
     foreign key (user_id) references User (user_id),
     foreign key (game_id) references Game (game_id),

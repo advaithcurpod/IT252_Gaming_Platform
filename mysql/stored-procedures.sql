@@ -32,7 +32,7 @@ BEGIN
     UPDATE temp_play SET e_time = etime WHERE user_id=uid AND game_id=gid;
 	SET start = (SELECT s_time FROM temp_play WHERE user_id=uid AND game_id=gid);
     SET p_time = etime - start;
-    UPDATE Plays SET play_time=p_time WHERE user_id=uid AND game_id=gid;
+    UPDATE Plays SET play_time = play_time + p_time WHERE user_id=uid AND game_id=gid;
     DROP temporary table temp_play;
 END $$ 
 
