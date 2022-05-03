@@ -100,36 +100,42 @@ drop trigger if exists credit_app_entity;
 delimiter $$ create trigger credit_app_entity
 after
 insert on Transactions for each row begin
-select count(*) into @n
-from Member_of
-where team_id in (
-		select team_id
-		from Game
-		where game_id = id
-	);
-if(
-	id_type = 'GAME'
-	or id_type = 'ITEM'
-) then
-update Developer
-set cash_earned = (new.tx_amt) / n
-where dev_id in (
-		select dev_id
-		from Member_of
-		where team_id in (
-				select team_id
-				from Game
-				where game_id = id
-			)
-	);
-elseif(id_type = 'USER') then
-update Player
-set coins = coins + new.tx_amt
-where player_id = id;
+
+set @amt := new.tx_amt;
+update Player set coins = coins - @amt where player_id = new.payer;
+
+if new.id_type = 'USER' then
+    update Developer set cash_earned = cash_earned + @amt where dev_id = new.id;
+    update Player set coins = coins + @amt where player_id = new.id;
+elseif new.id_type = 'GAME' then
+    set @tid := (select team_id from Game where game_id = new.id);
+    set @n := (select count(*) from Member_of where team_id = @tid);
+
+    update Developer set cash_earned = cash_earned + (@amt / @n)
+        where dev_id in (
+            select dev_id from Member_of where team_id = @tid
+        );
+    
+    update Player set coins = coins + (@amt / @n)
+        where player_id in (
+            select dev_id as player_id from Member_of where team_id = @tid
+        );
+else
+    set @gid := (select game_id from GameItem where item_id = new.id);
+    set @tid := (select team_id from Game where game_id = @gid);
+    set @n := (select count(*) from Member_of where team_id = @tid);
+
+    update Developer set cash_earned = cash_earned + (@amt / @n)
+        where dev_id in (
+            select dev_id from Member_of where team_id = @tid
+        );
+    
+    update Player set coins = coins + (@amt / @n)
+        where player_id in (
+            select dev_id as player_id from Member_of where team_id = @tid
+        );
 end if;
-update Player
-set coins = coins - new.tx_amt
-where player_id = payer;
+
 end $$ delimiter;
 -- trigger testing
 select *
