@@ -1,21 +1,20 @@
 -- update the account level when user score in games increases
 drop trigger if exists update_account_level;
-delimiter $$
-create trigger update_account_level
-after update on Plays
+DELIMITER $$
+CREATE TRIGGER update_account_level
+after insert on Plays
 for each row
 begin
-	select avg(score) into @avg_score from Plays;
-	if(avg_score between 0 and 100) then
-    update Player set account_level = 'noob';
-	elseif(avg_score between 100 and 1000) then
-	update Player set account_level = 'beginner';
-	elseif(avg_score between 1000 and 2000) then
-	update Player set account_level = 'average';
-	elseif(avg_score between 2000 and 5000) then
-	update Player set account_level = 'pro';
-	elseif(avg_score > 5000) then
-	update Player set account_level = 'legend';
+	if(new.score between 0 and 100) then
+    update Player set new.account_level = 'noob';
+	elseif(new.score between 100 and 1000) then
+	update Player set new.account_level = 'beginner';
+	elseif(new.score between 1000 and 2000) then
+	update Player set new.account_level = 'average';
+	elseif(new.score between 2000 and 5000) then
+	update Player set new.account_level = 'pro';
+	elseif(new.score > 5000) then
+	update Player set new.account_level = 'legend';
 	end if;
 end $$
 delimiter ;
@@ -27,8 +26,8 @@ create trigger update_developer_skill_on_insert
 after insert on Review
 for each row
 begin
-select avg(stars) into @avg_stars from Review having game_id = new.game_id;
-update Developer set skill_rating = avg_stars where dev_id in (select dev_id from Member_of where team_id in (select team_id from Game where game_id = new.game_id));
+select avg(stars) into @stars from Review having game_id = new.game_id;
+update Developer set skill_rating = stars where dev_id in (select dev_id from Member_of where team_id in (select team_id from Game where game_id = new.game_id));
 end $$
 delimiter ;
 

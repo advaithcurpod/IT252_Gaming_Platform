@@ -1,7 +1,7 @@
 -- Query 1
--- Find ids of all players
+-- Find ids of all players who have more than 500 coins
 
-select player_id from Player;
+select player_id, coins from Player WHERE coins>500;
 
 -- Query 2
 -- Find ids and roles of all developers
@@ -11,7 +11,7 @@ select dev_id, dev_role from Developer;
 -- Query 3
 -- find all games
 
-select * from Game;
+select * from Game WHERE tags LIKE '%Action%';
 
 -- Query 4
 -- Find all game items
