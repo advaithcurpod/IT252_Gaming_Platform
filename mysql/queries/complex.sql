@@ -66,6 +66,6 @@ select avg(tx_amt) from Transactions T
             where T.payer = U.payer
             and
             U.tx_amt >= 100
-    )
+    ) >= 1
     group by payer;
 

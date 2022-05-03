@@ -57,25 +57,44 @@ where dev_id in (
 	);
 end $$ delimiter;
 -- update the skill_rating of all developers when review is updated
-drop trigger if exists update_developer_skill_on_update;
-delimiter $$ create trigger update_developer_skill_on_update
+drop trigger if exists update_developer_skill_on_insert;
+delimiter $$ create trigger update_developer_skill_on_insert
 after
-update on Review for each row begin
-select avg(stars) into @avg_stars
-from Review
-having game_id = new.game_id;
-update Developer
-set skill_rating = avg_stars
-where dev_id in (
-		select dev_id
-		from Member_of
-		where team_id in (
-				select team_id
-				from Game
-				where game_id = new.game_id
-			)
-	);
-end $$ delimiter;
+insert on Review for each row begin
+declare a_s float;
+declare tid int;
+
+select team_id into tid from Game
+    where game_id = new.game_id;
+
+CREATE TEMPORARY TABLE IF NOT EXISTS games AS (SELECT game_id from Game where team_id = tid);
+
+select avg(stars) into a_s from Review where game_id in (select * from games);
+
+create temporary table if not exists devs as (select dev_id from Member_of where team_id = tid);
+
+update Developer set skill_rating = a_s where dev_id in (select * from devs);
+
+drop temporary table games;
+drop temporary table devs;
+
+end $$
+delimiter;
+
+-- select avg(stars) into a_s
+-- from Review
+-- having game_id = new.game_id;
+-- update Developer
+-- set skill_rating = avg_stars
+-- where dev_id in (
+-- 		select dev_id
+-- 		from Member_of
+-- 		where team_id in (
+-- 				select team_id
+-- 				from Game
+-- 				where game_id = new.game_id
+-- 			)
+-- 	);
 -- listen to transactions and credit and debit from the appropriate accounts
 drop trigger if exists credit_app_entity;
 delimiter $$ create trigger credit_app_entity
